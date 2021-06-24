@@ -133,4 +133,9 @@ class HomeController extends Controller
 
         return collect(compact('lastmonths', 'lastincomes', 'lastexpenses', 'semesterincomes', 'semesterexpenses'));
     }
+
+    public function cashier()
+    {
+        return view('cashier');
+    }
 }
