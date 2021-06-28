@@ -18,7 +18,7 @@ Auth::routes(['register' =>false]);
 
 Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::get('/cashier', 'HomeController@cashier')->name('cashier');
+Route::get('/cashier/{any?}', 'HomeController@cashier')->name('cashier');
 
 Route::group(['middleware' => 'auth'], function () {
 

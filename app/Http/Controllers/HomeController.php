@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Admin|Developer']);
+        $this->middleware(['role:Admin|Developer'])->except('cashier');
     }
     /**
      * Show the application dashboard.
