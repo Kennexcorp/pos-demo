@@ -43,13 +43,14 @@
 import router from "@/router";
 import useAuth from "@/services/auth.service";
 import { defineComponent, reactive, ref } from "vue";
-import { useCompanyInfo } from "@/services/utils.service";
+import { useCompanyInfo, useSwal } from "@/services/utils.service";
 
 export default defineComponent({
   setup() {
     const { setCompanyDetails, companyDetails } = useCompanyInfo();
     const { login } = useAuth();
     const loading = ref(false);
+    const { popop } = useSwal();
     const error = ref(false);
 
     // get company details
@@ -67,6 +68,7 @@ export default defineComponent({
         if (res.success) {
           error.value = false;
           router.push({ name: "Workspace" });
+          popop("Successfully Logged In")
         } else {
           error.value = true;
           router.push({ name: "Workspace" });

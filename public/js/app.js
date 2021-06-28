@@ -37209,6 +37209,10 @@ __webpack_require__.r(__webpack_exports__);
         login = _useAuth.login;
 
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)(false);
+
+    var _useSwal = (0,_services_utils_service__WEBPACK_IMPORTED_MODULE_5__.useSwal)(),
+        popop = _useSwal.popop;
+
     var error = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)(false); // get company details
 
     setCompanyDetails();
@@ -37241,6 +37245,7 @@ __webpack_require__.r(__webpack_exports__);
                   _router__WEBPACK_IMPORTED_MODULE_2__.default.push({
                     name: "Workspace"
                   });
+                  popop("Successfully Logged In");
                 } else {
                   error.value = true;
                   _router__WEBPACK_IMPORTED_MODULE_2__.default.push({
@@ -37442,7 +37447,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var baseURL = "http://127.0.0.1:8000/api";
+var baseURL = "/api";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (axios__WEBPACK_IMPORTED_MODULE_0___default().create({
   baseURL: baseURL
 }));
