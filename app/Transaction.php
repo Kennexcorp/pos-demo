@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
 use eloquentFilter\QueryFilter\ModelFilters\Filterable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Transaction extends Model
 {
     use Filterable;
+    use LogsActivity;
+
+    protected static $recordEvents = ['deleted', 'updated', 'created'];
 
     private static $whiteListFilter = [
         'user_id',

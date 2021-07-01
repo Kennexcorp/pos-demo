@@ -37318,7 +37318,7 @@ var _hoisted_1 = {
   id: "form"
 };
 var _hoisted_2 = {
-  "class": "text-center app-color"
+  "class": "text-center app-color h1"
 };
 var _hoisted_3 = {
   "class": "container"
@@ -37579,7 +37579,7 @@ var routes = [{
   component: _Views_Pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHashHistory)(),
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHashHistory)('/#/'),
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);

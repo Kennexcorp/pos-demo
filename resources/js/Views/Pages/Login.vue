@@ -1,6 +1,6 @@
 <template>
   <section id="form">
-    <h6 class="text-center app-color">{{ companyDetails.company_name }}</h6>
+    <h6 class="text-center app-color h1">{{ companyDetails.company_name }}</h6>
 
     <!--form-->
     <div class="container">

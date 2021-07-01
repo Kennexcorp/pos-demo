@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable
 {
@@ -15,7 +17,9 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
     use HasApiTokens;
+    use LogsActivity;
 
+    protected static $recordEvents = ['deleted', 'updated', 'created'];
     /**
      * The attributes that are mass assignable.
      *
@@ -47,4 +51,5 @@ class User extends Authenticatable
 
         return $this->belongsTo(Branch::class);
     }
+
 }

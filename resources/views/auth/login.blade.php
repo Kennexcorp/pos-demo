@@ -32,9 +32,10 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" href="" class="btn btn-primary btn-lg btn-block mb-3">Log in</button>
-                    <div class="pull-left">
+                    <div class="text-center">
                         <h6>
                             {{-- <a href="{{ route('register') }}" class="link footer-link">Create Account</a> --}}
+                            <a href="{{ route('cashier') }}" class="link footer-link">Cashier's Login Here</a>
                         </h6>
                     </div>
                     {{-- <div class="pull-right">
