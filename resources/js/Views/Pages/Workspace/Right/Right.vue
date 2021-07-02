@@ -44,6 +44,7 @@ export default defineComponent({
       useCart();
     const { confirm } = useSwal();
     const { companyDetails, setCompanyDetails } = useCompanyInfo();
+    const clearCart = inject<any>("clearCart");
 
     const { salesId, name } = user;
 
@@ -80,6 +81,7 @@ export default defineComponent({
           printItems();
           // refresh server
           setProducts();
+          clearCart();
         }
       }
     };

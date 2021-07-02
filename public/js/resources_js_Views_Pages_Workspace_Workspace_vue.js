@@ -388,6 +388,7 @@ __webpack_require__.r(__webpack_exports__);
         companyDetails = _useCompanyInfo.companyDetails,
         setCompanyDetails = _useCompanyInfo.setCompanyDetails;
 
+    var clearCart = (0,vue__WEBPACK_IMPORTED_MODULE_6__.inject)("clearCart");
     var salesId = user.salesId,
         name = user.name; // formatted for sending to server
 
@@ -444,6 +445,7 @@ __webpack_require__.r(__webpack_exports__);
                   printItems(); // refresh server
 
                   setProducts();
+                  clearCart();
                 }
 
               case 8:
