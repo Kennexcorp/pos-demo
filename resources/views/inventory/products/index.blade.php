@@ -10,7 +10,7 @@
                             <h4 class="card-title">Products</h4>
                         </div>
                         <div class="col-4 text-right">
-                            @hasrole('Store Keeper|Developer')<a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>@endrole
+                            @hasrole('Admin|Manager|Developer')<a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>@endrole
                         </div>
                     </div>
                 </div>
