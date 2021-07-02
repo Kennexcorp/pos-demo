@@ -220,7 +220,7 @@ export const usePrint = () => {
           </style>
         </head>
         <body>
-          <div id="frame">
+          <div>
             <h4 class="header-item total">${details.company_name}</h4>
             <p class="header-item">${details.company_address}</p>
             <p class="header-item">${details.company_phone}</p>

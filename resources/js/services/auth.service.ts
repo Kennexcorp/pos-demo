@@ -13,16 +13,25 @@ export default function useAuth() {
     salesId: localStorage.getItem("salesId") || "",
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const saveItems = (data: any) => {
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("name", data.user.name);
+    localStorage.setItem("salesId", data.salesId);
+  };
+
+  const removeItems = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("salesId");
+  };
+
   //   login
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const login = async (items: any) => {
     try {
-      const res = await axios.post("/login", items, {
-        headers: { "Content-Type": "application/json" },
-      });
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("name", res.data.user.name);
-      localStorage.setItem("salesId", res.data.salesId);
+      const res = await axios.post("/login", items);
+      saveItems(res.data);
       unSetError();
       return res;
     } catch (error) {
@@ -34,9 +43,7 @@ export default function useAuth() {
   //   close Shift
   const closeShift = async (sale: number) => {
     try {
-      const res = await axios.get(`/close-shift/${sale}`, {
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await axios.get(`/close-shift/${sale}`);
       unSetError();
       return res;
     } catch (error) {
@@ -48,18 +55,14 @@ export default function useAuth() {
   //   logout
   const logout = async () => {
     try {
-      const res = await axios.post("/logout", {
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await axios.post("/logout");
       unSetError();
-      localStorage.removeItem("token");
-      localStorage.removeItem("name");
-      localStorage.removeItem("salesId");
+      removeItems();
       router.push({ name: "Login" });
       return res;
     } catch (error) {
-      setError("Oops!! Error performing operation");
       removeItems();
+      setError("Oops!! Error performing operation");
       return error;
     }
   };
