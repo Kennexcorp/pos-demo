@@ -129,6 +129,7 @@ export const useCart = () => {
       return res;
     } catch (error) {
       // state.error = error.response.data;
+      console.log(error)
       setError("Oops!! Could not process items this time");
       return error;
     }

@@ -37579,7 +37579,7 @@ var routes = [{
   component: _Views_Pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHashHistory)('/#/'),
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHistory)('/cashier/'),
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -38087,10 +38087,11 @@ var useCart = function useCart() {
               _context5.prev = 8;
               _context5.t0 = _context5["catch"](0);
               // state.error = error.response.data;
+              console.log(_context5.t0);
               setError("Oops!! Could not process items this time");
               return _context5.abrupt("return", _context5.t0);
 
-            case 12:
+            case 13:
             case "end":
               return _context5.stop();
           }

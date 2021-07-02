@@ -83,7 +83,7 @@ class CashierController extends Controller
             foreach ($request->items as $item) {
                 # code...
                 $soldItem = $item += ['payment_method_id' => $request->payment_method];
-                $soldItem = $item += ['txref' => strtoupper(substr("HES", 0, 3)).date("-ymd").sprintf("%05d",SoldProduct::latest()->first()->id)];
+                $soldItem = $item += ['txref' => strtoupper(substr("HES", 0, 3)).date("-ymd").sprintf("%05d",SoldProduct::latest()->first()->id ?? 0)];
                 // return $soldItem;
                 $sale->products()->create($soldItem);
             }
@@ -96,7 +96,7 @@ class CashierController extends Controller
 
             DB::rollback();
 
-            return $this->errorResponse($th->getMessage());
+            return $this->errorResponse($th->getLine());
         }
 
 

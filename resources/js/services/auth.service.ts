@@ -59,6 +59,7 @@ export default function useAuth() {
       return res;
     } catch (error) {
       setError("Oops!! Error performing operation");
+      removeItems();
       return error;
     }
   };
