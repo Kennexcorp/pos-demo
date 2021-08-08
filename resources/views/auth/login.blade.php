@@ -26,7 +26,7 @@
                                 <i class="tim-icons icon-lock-circle"></i>
                             </div>
                         </div>
-                        <input type="password" placeholder="Clave" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                        <input type="password" placeholder="Password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
                         @include('alerts.feedback', ['field' => 'password'])
                     </div>
                 </div>

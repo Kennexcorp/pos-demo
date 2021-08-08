@@ -77,8 +77,10 @@ export default defineComponent({
           payment_method: payment_method.value,
         });
         if (res.success) {
+
+            console.log(res);
           // print reciept
-          printItems();
+          printItems(res.data.txref);
           // refresh server
           setProducts();
           clearCart();
@@ -87,11 +89,12 @@ export default defineComponent({
     };
 
     // print items on the table
-    const printItems = () => {
+    const printItems = (txref) => {
       print(
         formatForPrinting(cartItems),
         { name, ...companyDetails },
-        total.value || 0
+        total.value || 0,
+        txref
       );
     };
 

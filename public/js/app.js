@@ -37659,10 +37659,11 @@ function useAuth() {
             case 9:
               _context.prev = 9;
               _context.t0 = _context["catch"](0);
+              console.log(_context.t0);
               setError("Oops!! Unable to Login");
               return _context.abrupt("return", _context.t0);
 
-            case 13:
+            case 14:
             case "end":
               return _context.stop();
           }
@@ -38135,7 +38136,7 @@ var usePrint = function usePrint() {
     });
   };
 
-  var print = function print(items, details, total) {
+  var print = function print(items, details, total, txref) {
     var trs = "";
     items.forEach(function (item) {
       trs += "<tr>"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38151,7 +38152,7 @@ var usePrint = function usePrint() {
       trs += "</tr>";
     });
     var printWindow = window.open("", "", "width=800, height=600");
-    printWindow === null || printWindow === void 0 ? void 0 : printWindow.document.write("<!DOCTYPE html>\n      <html>\n        <head>\n          <style>\n            #frame {\n              box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);\n              padding: 2rem;\n              margin: 0 auto;\n              width: 25rem;\n              background: #FFF;\n            }\n            table{\n              width: 100%;\n              border-collapse: collapse;\n              margin-bottom: 5px;\n            }\n            .total {\n              font-weight: bold;\n            }\n            .total-table {\n              margin-top: 2.5rem;\n            }\n            .header-item {\n              margin-top: 0.5rem;\n              margin-bottom: 0.5rem;\n              text-align: center;\n            }\n            .left {\n              float: left;\n            }\n            .right {\n              float: right;\n            }\n            .clear {\n              clear: both;\n              margin-top: 0.5rem;\n              margin-bottom: 0;\n            }\n          </style>\n        </head>\n        <body>\n          <div>\n            <h4 class=\"header-item total\">".concat(details.company_name, "</h4>\n            <p class=\"header-item\">").concat(details.company_address, "</p>\n            <p class=\"header-item\">").concat(details.company_phone, "</p>\n            <p class=\"header-item\">Transaction Receipt</p>\n            <p>\n              <span class=\"left\">Cashier: ").concat(details.name, "</span>\n              <span class=\"right\">Date: ").concat((0,_utils_service__WEBPACK_IMPORTED_MODULE_13__.formatDate)(Date()), "</span>\n            </p>\n            <p class=\"clear\">Items</p>\n            <table>\n              <tbody>\n                <tr>\n                  <td>#</td><td>Name</td><td>Price</td><td>Qty</td><td>Total</td>\n                </tr>\n                ").concat(trs, "\n                <tr class=\"total\">\n                  <td></td>\n                  <td></td>\n                  <td>Total:</td>\n                  <td></td>\n                  <td>").concat(formatCurrency(total), "</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </body>\n      </html>"));
+    printWindow === null || printWindow === void 0 ? void 0 : printWindow.document.write("<!DOCTYPE html>\n      <html>\n        <head>\n          <style>\n            #frame {\n              box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);\n              padding: 2rem;\n              margin: 0 auto;\n              width: 25rem;\n              background: #FFF;\n            }\n            table{\n              width: 100%;\n              border-collapse: collapse;\n              margin-bottom: 5px;\n            }\n            .total {\n              font-weight: bold;\n            }\n            .total-table {\n              margin-top: 2.5rem;\n            }\n            .header-item {\n              margin-top: 0.5rem;\n              margin-bottom: 0.5rem;\n              text-align: center;\n            }\n            .left {\n              float: left;\n            }\n            .right {\n              float: right;\n            }\n            .clear {\n              clear: both;\n              margin-top: 0.5rem;\n              margin-bottom: 0;\n            }\n          </style>\n        </head>\n        <body>\n          <div>\n            <h4 class=\"header-item total\">".concat(details.company_name, "</h4>\n            <p class=\"header-item\">").concat(details.company_address, "</p>\n            <p class=\"header-item\">").concat(details.company_phone, "</p>\n            <p class=\"header-item\">Transaction Receipt</p>\n            <p class=\"header-item\">").concat(txref, "</p>\n            <p>\n              <span class=\"left\">Cashier: ").concat(details.name, "</span>\n              <span class=\"right\">Date: ").concat((0,_utils_service__WEBPACK_IMPORTED_MODULE_13__.formatDate)(Date()), "</span>\n            </p>\n            <p class=\"clear\">Items</p>\n            <table>\n              <tbody>\n                <tr>\n                  <td>#</td><td>Name</td><td>Price</td><td>Qty</td><td>Total</td>\n                </tr>\n                ").concat(trs, "\n                <tr class=\"total\">\n                  <td></td>\n                  <td></td>\n                  <td>Total:</td>\n                  <td></td>\n                  <td>").concat(formatCurrency(total), "</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </body>\n      </html>"));
     printWindow === null || printWindow === void 0 ? void 0 : printWindow.focus();
     printWindow === null || printWindow === void 0 ? void 0 : printWindow.print();
     printWindow === null || printWindow === void 0 ? void 0 : printWindow.close();

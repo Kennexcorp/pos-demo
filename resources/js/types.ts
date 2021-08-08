@@ -18,6 +18,7 @@ export interface ReceiptDetails {
   company_email: string;
   company_address: string;
   company_phone: number;
+  trans_ref: number;
 }
 
 export interface User {

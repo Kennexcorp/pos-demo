@@ -441,8 +441,9 @@ __webpack_require__.r(__webpack_exports__);
                 res = _context.sent;
 
                 if (res.success) {
-                  // print reciept
-                  printItems(); // refresh server
+                  console.log(res); // print reciept
+
+                  printItems(res.data.txref); // refresh server
 
                   setProducts();
                   clearCart();
@@ -462,10 +463,10 @@ __webpack_require__.r(__webpack_exports__);
     }(); // print items on the table
 
 
-    var printItems = function printItems() {
+    var printItems = function printItems(txref) {
       print(formatForPrinting(cartItems), (0,_home_kennexcorp_Documents_Projects_PosEatery_backend_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({
         name: name
-      }, companyDetails), total.value || 0);
+      }, companyDetails), total.value || 0, txref);
     };
 
     return {

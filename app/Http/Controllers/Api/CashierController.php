@@ -79,11 +79,12 @@ class CashierController extends Controller
 
         DB::beginTransaction();
         try {
-            //code...
+            $txref = ['txref' => strtoupper(substr("HES", 0, 3)).date("-ymd").sprintf("%05d",SoldProduct::latest()->first()->id ?? 0)];
+
             foreach ($request->items as $item) {
                 # code...
                 $soldItem = $item += ['payment_method_id' => $request->payment_method];
-                $soldItem = $item += ['txref' => strtoupper(substr("HES", 0, 3)).date("-ymd").sprintf("%05d",SoldProduct::latest()->first()->id ?? 0)];
+                $soldItem = $item += $txref;
                 // return $soldItem;
                 $sale->products()->create($soldItem);
             }
@@ -96,11 +97,11 @@ class CashierController extends Controller
 
             DB::rollback();
 
-            return $this->errorResponse($th->getLine());
+            return "Opps Something went wrong";
         }
 
 
-        return $this->successResponse("Sales recorded successfully");
+        return $this->successResponse("Sales recorded successfully", $txref);
 
     }
 
@@ -151,8 +152,8 @@ class CashierController extends Controller
         return $this->successResponse("Fetched successfully!!", [
             "company_name" => "Happiness Eatery Services",
             "address" => "Rayfield-zaramaganda rd",
-            "phone_number" => "0000000000",
-            'email' => "example@gmail.com"
+            "phone_number" => "",
+            'email' => "hes@gmail.com"
         ]);
     }
 
