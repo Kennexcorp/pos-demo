@@ -42,9 +42,10 @@ export default function useAuth() {
     };
 
     //   close Shift
-    const closeShift = async (sale: number) => {
+    const closeShift = async (salesId: number) => {
+        removeItems();
         try {
-            const res = await axios.get(`/close-shift/${sale}`);
+            const res = await axios.get(`/close-shift/${salesId}`);
             unSetError();
             return res;
         } catch (error) {
@@ -55,14 +56,13 @@ export default function useAuth() {
 
     //   logout
     const logout = async () => {
+        removeItems();
         try {
             const res = await axios.post("/logout");
             unSetError();
-            removeItems();
             router.push({ name: "Login" });
             return res;
         } catch (error) {
-            removeItems();
             setError("Oops!! Error performing operation");
             return error;
         }
