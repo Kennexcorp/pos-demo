@@ -46,8 +46,10 @@ export default function useAuth() {
         try {
             const res = await axios.get(`/close-shift/${sale}`);
             unSetError();
+            removeItems();
             return res;
         } catch (error) {
+            removeItems();
             setError("Oops!! Error performing operation");
             return error;
         }
@@ -55,16 +57,20 @@ export default function useAuth() {
 
     //   logout
     const logout = async () => {
-        try {
-            const res = await axios.post("/logout");
-            unSetError();
-            removeItems();
+        if (localStorage.getItem("token") !== null && localStorage.getItem("token") !== undefined) {
+            try {
+                const res = await axios.post("/logout");
+                unSetError();
+                removeItems();
+                router.push({ name: "Login" });
+                return res;
+            } catch (error) {
+                removeItems();
+                setError("Oops!! Error performing operation");
+                return error;
+            }
+        } else {
             router.push({ name: "Login" });
-            return res;
-        } catch (error) {
-            removeItems();
-            setError("Oops!! Error performing operation");
-            return error;
         }
     };
 
