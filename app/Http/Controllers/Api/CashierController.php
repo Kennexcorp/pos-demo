@@ -65,7 +65,7 @@ class CashierController extends Controller
             'items.*.qty' => 'required',
             'items.*.total_amount' => 'required',
             'payment_method' => 'required',
-            'salesID' => 'required|exists:sales,id'
+            'salesID' => 'required'
         ]);
 
         // return $request->toArray();
@@ -122,9 +122,10 @@ class CashierController extends Controller
 
     public function finalize(Sale $sale)
     {
-        $sale->total_amount += $sale->products->where('is_new', true)->sum('total_amount');
+        $products = $sale->products->where('is_new', true);
+        $sale->total_amount += $products->sum('total_amount');
 
-        foreach ($sale->products as $sold_product) {
+        foreach ($products as $sold_product) {
             $product_name = $sold_product->product->name;
             $product_stock = $sold_product->product->stock;
             if($sold_product->qty > $product_stock) {
@@ -132,7 +133,7 @@ class CashierController extends Controller
             }
         }
 
-        foreach ($sale->products as $sold_product) {
+        foreach ($products as $sold_product) {
             $sold_product->product->stock -= $sold_product->qty;
             $sold_product->is_new = false;
             $sold_product->save();

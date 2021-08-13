@@ -59,6 +59,7 @@ class AuthController extends Controller
                     'user_id' => $user->id,
                     'client_id' => $client->id
                 ]);
+                
             } catch (\Throwable $th) {
                 //throw $th;
                 Log::error("Error creating Sale: ".$th->getMessage());
