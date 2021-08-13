@@ -41,7 +41,7 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function errorResponse($error, $code = Response::HTTP_NOT_FOUND)
+    public function errorResponse($error, $code = Response::HTTP_BAD_REQUEST)
     {
     	$response = [
             'success' => false,
