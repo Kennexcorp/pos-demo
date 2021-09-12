@@ -30,7 +30,7 @@ class ProductRequest extends FormRequest
             'description' => [],
             'stock' => ['required'],
             'price' => ['required'],
-            'store' => ['required'],
+            'store' => ['nullable'],
             'price_wholesaler' => [],
         ];
     }

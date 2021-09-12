@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::whereNotIn('name', ['Developer'])->get();
+        $roles = Role::whereNotIn('name', ['Developer', 'Admin'])->get();
         $branches = Branch::all();
         return view('users.create', compact('roles', 'branches'));
     }
@@ -66,7 +66,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles = Role::whereNotIn('name', ['Developer', 'Admin'])->get();
+        $role = $user->roles->first()->name;
+        // dd($role);
+        return view('users.edit', compact('user', 'roles', 'role'));
     }
 
     /**
@@ -78,6 +81,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
+        dd($request->toArray());
         $hasPassword = $request->get('password');
 
         $request->merge(['password' => Hash::make($request->get('password'))]);
