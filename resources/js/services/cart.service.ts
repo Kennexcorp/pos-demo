@@ -60,7 +60,7 @@ export const useCart = () => {
             return res;
         } catch (error) {
             // state.error = error.response.data;
-            setError("Oops!! Connection error");
+            setError("Oops!! Error connecting to serve please refresh your browser");
             return error;
         }
     };
@@ -75,7 +75,7 @@ export const useCart = () => {
             unSetError();
             return res;
         } catch (error) {
-            setError("Oops!! Connection error");
+            setError("Oops!! Error connecting to serve please refresh your browser");
             return error;
         }
     };
@@ -90,7 +90,7 @@ export const useCart = () => {
             unSetError();
             return res;
         } catch (error) {
-            setError("Oops!! Connection error");
+            setError("Oops!! Error connecting to serve please refresh your browser");
             return error;
         }
     };

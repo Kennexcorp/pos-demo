@@ -100,7 +100,6 @@ class CashierController extends Controller
             return "Opps Something went wrong";
         }
 
-
         return $this->successResponse("Sales recorded successfully", $txref);
 
     }
@@ -140,9 +139,7 @@ class CashierController extends Controller
             $sold_product->product->save();
 
         }
-
-        // $sale->finalized_at = Carbon::now()->toDateTimeString();
-        $sale->client->balance -= $sale->total_amount;
+        $sale->client->balance -= $products->sum('total_amount');
         $sale->save();
         $sale->client->save();
 

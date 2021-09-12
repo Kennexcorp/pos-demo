@@ -9,9 +9,11 @@
                         <div class="col-8">
                             <h4 class="card-title">Categories</h4>
                         </div>
+                        @hasanyrole('Admin|Manager|Developer')
                         <div class="col-4 text-right">
                             <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">New Category</a>
                         </div>
+                        @endhasanyrole
                     </div>
                 </div>
                 <div class="card-body">

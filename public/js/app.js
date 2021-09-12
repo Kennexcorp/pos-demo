@@ -37691,20 +37691,22 @@ function useAuth() {
             case 3:
               res = _context2.sent;
               unSetError();
+              removeItems();
               return _context2.abrupt("return", res);
 
-            case 8:
-              _context2.prev = 8;
+            case 9:
+              _context2.prev = 9;
               _context2.t0 = _context2["catch"](0);
+              removeItems();
               setError("Oops!! Error performing operation");
               return _context2.abrupt("return", _context2.t0);
 
-            case 12:
+            case 14:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 8]]);
+      }, _callee2, null, [[0, 9]]);
     }));
 
     return function closeShift(_x2) {
@@ -37720,11 +37722,16 @@ function useAuth() {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
+              if (!(localStorage.getItem("token") !== null && localStorage.getItem("token") !== undefined)) {
+                _context3.next = 18;
+                break;
+              }
+
+              _context3.prev = 1;
+              _context3.next = 4;
               return _api__WEBPACK_IMPORTED_MODULE_3__.default.post("/logout");
 
-            case 3:
+            case 4:
               res = _context3.sent;
               unSetError();
               removeItems();
@@ -37733,19 +37740,28 @@ function useAuth() {
               });
               return _context3.abrupt("return", res);
 
-            case 10:
-              _context3.prev = 10;
-              _context3.t0 = _context3["catch"](0);
+            case 11:
+              _context3.prev = 11;
+              _context3.t0 = _context3["catch"](1);
               removeItems();
               setError("Oops!! Error performing operation");
               return _context3.abrupt("return", _context3.t0);
 
-            case 15:
+            case 16:
+              _context3.next = 19;
+              break;
+
+            case 18:
+              _router__WEBPACK_IMPORTED_MODULE_4__.default.push({
+                name: "Login"
+              });
+
+            case 19:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[0, 10]]);
+      }, _callee3, null, [[1, 11]]);
     }));
 
     return function logout() {
@@ -38294,7 +38310,13 @@ var useSwal = function useSwal() {
             case 0:
               msg = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : "Successful";
               status = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : "Processed!";
-              sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire("".concat(status), "".concat(msg), "success");
+              sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                title: "".concat(status),
+                text: "".concat(msg),
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+              });
 
             case 3:
             case "end":

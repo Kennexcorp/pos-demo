@@ -113,7 +113,7 @@
 
                 <div class="collapse {{ $section == 'inventory' ? 'show' : '' }}" id="inventory">
                     <ul class="nav pl-4">
-                        @hasanyrole('Admin|Manager|Developer')
+                        @hasanyrole('Admin|Manager|Developer|Store Keeper')
                         <li @if ($pageSlug == 'istats') class="active " @endif>
                             <a href="{{ route('inventory.stats') }}">
                                 <i class="tim-icons icon-chart-pie-36"></i>

@@ -37,7 +37,13 @@ export const useSwal = () => {
     return res.value;
   };
   const popop = async (msg = "Successful", status = "Processed!") => {
-    Swal.fire(`${status}`, `${msg}`, "success");
+    Swal.fire({
+      title: `${status}`,
+      text: `${msg}`,
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500,
+    })
   };
   return { confirm, popop };
 };

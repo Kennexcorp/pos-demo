@@ -42,6 +42,20 @@
                                     <label class="form-control-label" for="input-password-confirmation">{{ __('Confirm Password') }}</label>
                                     <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="">
                                 </div>
+                                <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-method">Role</label>
+                                    <select name="role" id="input-method"
+                                        class="form-select form-control-alternative{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
+                                        @foreach ($roles as $role)
+                                        @if($role['name'] == old('role'))
+                                        <option value="{{$role['name']}}" selected>{{$role['name']}}</option>
+                                        @else
+                                        <option value="{{$role['name']}}">{{$role['name']}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    @include('alerts.feedback', ['field' => 'role'])
+                                </div>
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
@@ -54,3 +68,11 @@
         </div>
     </div>
 @endsection
+@push('js')
+<script>
+    new SlimSelect({
+        select: '.form-select'
+    })
+
+</script>
+@endpush('js')
