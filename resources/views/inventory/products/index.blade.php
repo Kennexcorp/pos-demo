@@ -8,6 +8,17 @@
                     <div class="row">
                         <div class="col-8">
                             <h4 class="card-title">Products</h4>
+                            <form action="{{ route('products.index')}}" method="GET">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <input type="text" class="form-control" name="search" value="{{$searchTerm}}">
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+
                         </div>
                         <div class="col-4 text-right">
                             @hasrole('Admin|Manager|Developer')<a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>@endrole
