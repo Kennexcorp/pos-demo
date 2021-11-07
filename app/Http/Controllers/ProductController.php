@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -17,11 +18,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::orderBy('store', 'desc')->paginate(25);
+        $searchTerm = '';
+        if ($request->search) {
+            $searchTerm = $request->search;
+            $products = Product::where('name', 'like', "%$searchTerm%")->orderBy('store', 'asc')->paginate(25);
+        }
 
-        return view('inventory.products.index', compact('products'));
+
+        return view('inventory.products.index', compact('products', 'searchTerm'));
     }
 
     /**
